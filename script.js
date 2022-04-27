@@ -9,11 +9,14 @@ function counterPlay(){
     else return "scissors"
 }
 
+let playerScore  = 0;
+let computerScore  = 0;
+
 // console.log(counterPlay());
 
 function yourTurn(){
     let turn = prompt("Choose among rock paper or scissors: ");
-    return turn.toLowerCase();
+    return turn.toLowerCase(); 
 }
 
 function playRound(playerSelection, computerSelection){
@@ -62,3 +65,29 @@ function playRound(playerSelection, computerSelection){
 // console.log(playerSelection);
 // console.log(computerSelection);
 // console.log(playRound(playerSelection , computerSelection)); */
+
+function game(){
+    // playRound()
+    while (playerScore < 5 && computerScore < 5) {
+        const playerSelection = yourTurn();
+        const computerSelection = counterPlay();
+        let roundResult = playRound(playerSelection, computerSelection);
+
+        console.log(playRound(playerSelection, computerSelection));
+        console.log("you choose: ", playerSelection, "computer chose: " ,computerSelection);
+        //incrementing the score:
+        if(roundResult.search('You win') > -1){
+            playerScore++;
+        } else if (roundResult.search('You loose') > -1){
+            computerScore++;
+        }
+
+        console.log("you : ",playerScore , "computer : " , computerScore);
+        
+        
+        
+    }
+}
+
+console.log(game())
+
