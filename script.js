@@ -13,53 +13,52 @@ function counterPlay(){
 
 function yourTurn(){
     let turn = prompt("Choose among rock paper or scissors: ");
-    return turn;
+    return turn.toLowerCase();
 }
 
 function playRound(playerSelection, computerSelection){
-    computerSelection = counterPlay();
-    playerSelection = yourTurn().toLowerCase(); //becomes case insensitive
-    console.log(playerSelection);
-    console.log(computerSelection);
     if (playerSelection === 'scissors'){
         if (computerSelection === 'scissors'){
-            console.log( 'It is a tie');
+            return  'It is a tie';
         }
         else if (computerSelection === 'rock'){
-            console.log('You loose. Rock beat scissors');
+            return 'You loose. Rock beat scissors';
         }
         else if (computerSelection === 'paper'){
-            console.log('You win! scissors beat paper');
+            return 'You win! scissors beat paper';
         }
     }
 
     else if (playerSelection === 'rock'){
         if (computerSelection === 'rock'){
-            console.log('It is a tie');
+            return 'It is a tie';
         }
         else if (computerSelection === 'paper'){
-            console.log('You loose. Paper beat rock.');
+            return 'You loose. Paper beat rock.';
         }
         else if (computerSelection === 'scissors'){
-            console.log('You win! Rock beat scissors');
+            return 'You win! Rock beat scissors';
         }
     }
 
     else if (playerSelection === 'paper'){
         if (computerSelection === 'paper'){
-            console.log('It is a tie.');
+            return 'It is a tie.';
         }
         if (computerSelection === 'scissors'){
-            console.log('You loose. Scissors beat paper.');
+            return 'You loose. Scissors beat paper.';
         }
         if (computerSelection === 'rock'){
-            console.log('You win! Paper beat rock.');
+            return 'You win! Paper beat rock.';
         }
     }
 
-    else console.log('The world is beautiful');
+    else return 'The world is beautiful';
 }
+/* check
+// const playerSelection = yourTurn();
+// const computerSelection = counterPlay();
 
-
-counterPlay();
-playRound();
+// console.log(playerSelection);
+// console.log(computerSelection);
+// console.log(playRound(playerSelection , computerSelection)); */
