@@ -18,7 +18,7 @@ function yourTurn(){
 
 function playRound(playerSelection, computerSelection){
     computerSelection = counterPlay();
-    playerSelection = yourTurn();
+    playerSelection = yourTurn().toLowerCase(); //becomes case insensitive
     console.log(playerSelection);
     console.log(computerSelection);
     if (playerSelection === 'scissors'){
