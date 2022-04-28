@@ -56,7 +56,7 @@ function playRound(playerSelection, computerSelection){
         }
     }
 
-    else return 'The world is beautiful';
+    else return 'The world is beautiful'; 
 }
 /* check
 // const playerSelection = yourTurn();
@@ -84,6 +84,12 @@ function game(){
 
         console.log("you : ",playerScore , "computer : " , computerScore);
         
+        if(computerScore == 5){
+            console.log("You lost :( I won");
+        }
+        else if(playerScore == 5){
+            console.log("I lost, you're too good. Congrats on the win!")
+        }
         
         
     }
