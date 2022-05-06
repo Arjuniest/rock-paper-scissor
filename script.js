@@ -1,3 +1,13 @@
+const results = document.querySelector('#results');
+
+const round = document.createElement('div');
+results.classList.add('round'); 
+round.textContent = game();
+
+
+
+
+
 function counterPlay(){
     let computerChoice = Math.random(); //returns an integer 0 to 1
     if(computerChoice <= 0.34){
@@ -9,15 +19,11 @@ function counterPlay(){
     else return "scissors"
 }
 
-let playerScore  = 0;
-let computerScore  = 0;
+
 
 // console.log(counterPlay());
 
-function yourTurn(){
-    let turn = prompt("Choose among rock paper or scissors: ");
-    return turn.toLowerCase(); 
-}
+
 
 function playRound(playerSelection, computerSelection){
     if (playerSelection === 'scissors'){
@@ -66,9 +72,22 @@ function playRound(playerSelection, computerSelection){
 // console.log(computerSelection);
 // console.log(playRound(playerSelection , computerSelection)); */
 
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', () => {
+    myTurn = button.id;
+}));
+
+function yourTurn(){
+    let turn = prompt("Choose among rock paper or scissors: ");
+    return turn.toLowerCase(); 
+}
+
 function game(){
+
+let playerScore  = 0;
+let computerScore  = 0;
     // playRound()
-    while (playerScore < 5 && computerScore < 5) {
+    while (playerScore < 2 && computerScore < 2) {
         const playerSelection = yourTurn();
         const computerSelection = counterPlay();
         let roundResult = playRound(playerSelection, computerSelection);
