@@ -74,8 +74,36 @@ function playRound(playerSelection, computerSelection){
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button => button.addEventListener('click', () => {
-    myTurn = button.id;
+    let playerScore  = 0;
+    let computerScore  = 0;
+    
+    playerSelection = button.id;
+    computerSelection = counterPlay();
+    
+    let roundResult = playRound(playerSelection, computerSelection);
+    console.log(`you selected : ${playerSelection} and computer selected : ${computerSelection}`);
+    //incrementing and keeping track of the scores
+
+    if(roundResult.search('You win') > -1){
+        playerScore++;
+    } else if (roundResult.search('You loose') > -1){
+        computerScore++;
+    }
+
+    if(computerScore == 5){
+        console.log("You lost :( I won");
+    }
+    else if(playerScore == 5){
+        console.log("I lost, you're too good. Congrats on the win!")
+    }
+
+    console.log("you : ",playerScore , "computer : " , computerScore);
+    
+    
 }));
+
+
+
 
 function yourTurn(){
     let turn = prompt("Choose among rock paper or scissors: ");
@@ -87,9 +115,8 @@ function game(){
 let playerScore  = 0;
 let computerScore  = 0;
     // playRound()
-    while (playerScore < 2 && computerScore < 2) {
-        const playerSelection = yourTurn();
-        const computerSelection = counterPlay();
+    while (playerScore < 0 && computerScore < 0) {
+        
         let roundResult = playRound(playerSelection, computerSelection);
 
         console.log(playRound(playerSelection, computerSelection));
