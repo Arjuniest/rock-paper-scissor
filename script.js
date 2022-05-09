@@ -1,4 +1,95 @@
-const results = document.querySelector('#results');
+let playerWins = 0
+let computerWins = 0
+const choices = ['rock', 'paper', 'scissors']
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', () => {
+  const {
+    id
+  } = button
+  console.log(id);
+  playMatch(id, (Math.floor(Math.random() * choices.length)))
+}));
+
+const startGame = () => {
+  let playerWins = 0
+  let computerWins = 0
+  
+
+}
+
+const playMatch = (playerChoice, computerChoice) => {
+//   const result = (choices.length + playerChoice - computerChoice) % choices.length
+  let message
+    if (playerChoice === 'scissors'){
+        if (choices[computerChoice] === 'scissors'){
+            message =  'It is a tie';
+        }
+        else if (choices[computerChoice] === 'rock'){
+            message = 'You loose. Rock beat scissors';
+        }
+        else if (choices[computerChoice] === 'paper'){
+            message = 'You win! scissors beat paper';
+        }
+    }
+
+    else if (playerChoice === 'rock'){
+        if (choices[computerChoice] === 'rock'){
+            message = 'It is a tie';
+        }
+        else if (choices[computerChoice] === 'paper'){
+            message = 'You loose. Paper beat rock.';
+        }
+        else if (choices[computerChoice] === 'scissors'){
+            message = 'You win! Rock beat scissors';
+        }
+    }
+
+    else if (playerChoice === 'paper'){
+        if (choices[computerChoice] === 'paper'){
+            message  =  'It is a tie.';
+        }
+        if (choices[computerChoice] === 'scissors'){
+            message  =  'You loose. Scissors beat paper.';
+        }
+        if (choices[computerChoice] === 'rock'){
+            message  =  'You win! Paper beat rock.';
+        }
+    }
+
+    else message  =  'The world is beautiful'; 
+    console.log(`You choose : ${playerChoice} computer choose : ${choices[computerChoice]}`)
+
+    increment(message); //increment player or computer wins
+
+    console.log(`Your score : ${playerWins}, Computer score : ${computerWins}`)
+    console.log(message)
+    if(computerWins == 5){
+        console.log("You lost :( I won");
+    }
+    else if(playerWins == 5){
+        console.log("I lost, you're too good. Congrats on the win!")
+    }
+  if (Math.max(playerWins, computerWins) === 5) {
+    alert('game ended')
+  }
+}
+  
+function increment(message){
+    if(message.search('You win') > -1){
+                playerWins++;
+            } else if (message.search('You loose') > -1){
+                computerWins++;
+            }      
+}
+
+
+
+/** Old code :
+ * =========================================================================
+ * This contains my initial attempt: 
+ * =========================================================================
+ * 
+ const results = document.querySelector('#results');
 
 const round = document.createElement('div');
 results.classList.add('round'); 
@@ -64,43 +155,59 @@ function playRound(playerSelection, computerSelection){
 
     else return 'The world is beautiful'; 
 }
-/* check
+// check
 // const playerSelection = yourTurn();
 // const computerSelection = counterPlay();
 
 // console.log(playerSelection);
 // console.log(computerSelection);
-// console.log(playRound(playerSelection , computerSelection)); */
+// console.log(playRound(playerSelection , computerSelection)); 
 
+let playerChoices = [];
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button => button.addEventListener('click', () => {
-    let playerScore  = 0;
-    let computerScore  = 0;
-    
-    playerSelection = button.id;
-    computerSelection = counterPlay();
-    
-    let roundResult = playRound(playerSelection, computerSelection);
-    console.log(`you selected : ${playerSelection} and computer selected : ${computerSelection}`);
-    //incrementing and keeping track of the scores
+      const {id} = button
+      playerChoices.push(id)
+      handleChoice(id)
+    })
+);
 
-    if(roundResult.search('You win') > -1){
-        playerScore++;
-    } else if (roundResult.search('You loose') > -1){
-        computerScore++;
-    }
+const handleChoice = id => {
+    console.log(id)
+    console.log(playerChoices)
+  }
 
-    if(computerScore == 5){
-        console.log("You lost :( I won");
-    }
-    else if(playerScore == 5){
-        console.log("I lost, you're too good. Congrats on the win!")
-    }
 
-    console.log("you : ",playerScore , "computer : " , computerScore);
+
+// const buttons = document.querySelectorAll('button');
+// buttons.forEach(button => button.addEventListener('click', () => {
+//     let playerScore  = 0;
+//     let computerScore  = 0;
+    
+//     playerSelection = button.id;
+//     computerSelection = counterPlay();
+    
+//     let roundResult = playRound(playerSelection, computerSelection);
+//     console.log(`you selected : ${playerSelection} and computer selected : ${computerSelection}`);
+//     //incrementing and keeping track of the scores
+
+//     if(roundResult.search('You win') > -1){
+//         playerScore++;
+//     } else if (roundResult.search('You loose') > -1){
+//         computerScore++;
+//     }
+
+//     if(computerScore == 5){
+//         console.log("You lost :( I won");
+//     }
+//     else if(playerScore == 5){
+//         console.log("I lost, you're too good. Congrats on the win!")
+//     }
+
+//     console.log("you : ",playerScore , "computer : " , computerScore);
     
     
-}));
+// }));
 
 
 
@@ -115,8 +222,9 @@ function game(){
 let playerScore  = 0;
 let computerScore  = 0;
     // playRound()
-    while (playerScore < 0 && computerScore < 0) {
-        
+    while (playerScore < 5 && computerScore < 5) {
+        const playerSelection = playerChoices[playerChoices.length - 1];
+        const computerSelection = counterPlay();
         let roundResult = playRound(playerSelection, computerSelection);
 
         console.log(playRound(playerSelection, computerSelection));
@@ -142,4 +250,4 @@ let computerScore  = 0;
 }
 
 console.log(game())
-
+ */
