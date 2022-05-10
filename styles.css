@@ -4,15 +4,16 @@ body {
     font-family: 'Roboto', arial;
 }
 
-.console {
+.buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 79px;
     font-weight: 700;
+    gap: 20px;
 }
 
-.future {
+#selection, #scores {
     display: flex;
     justify-content: center;
     align-items: center;
