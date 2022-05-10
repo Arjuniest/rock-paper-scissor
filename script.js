@@ -1,6 +1,11 @@
-let playerWins = 0
-let computerWins = 0
-const choices = ['rock', 'paper', 'scissors']
+const scores = document.querySelector('#scores');
+const selection = document.querySelector('#selection');
+
+
+
+let playerWins = 0;
+let computerWins = 0;
+const choices = ['Rock', 'Paper', 'Scissors']
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button => button.addEventListener('click', () => {
   const {
@@ -10,69 +15,78 @@ buttons.forEach(button => button.addEventListener('click', () => {
   playMatch(id, (Math.floor(Math.random() * choices.length)))
 }));
 
-const startGame = () => {
-  let playerWins = 0
-  let computerWins = 0
-  
-
-}
 
 const playMatch = (playerChoice, computerChoice) => {
-//   const result = (choices.length + playerChoice - computerChoice) % choices.length
+
   let message
-    if (playerChoice === 'scissors'){
-        if (choices[computerChoice] === 'scissors'){
+    if (playerChoice === 'Scissors'){
+        if (choices[computerChoice] === 'Scissors'){
             message =  'It is a tie';
         }
-        else if (choices[computerChoice] === 'rock'){
+        else if (choices[computerChoice] === 'Rock'){
             message = 'You loose. Rock beat scissors';
         }
-        else if (choices[computerChoice] === 'paper'){
+        else if (choices[computerChoice] === 'Paper'){
             message = 'You win! scissors beat paper';
         }
     }
 
-    else if (playerChoice === 'rock'){
-        if (choices[computerChoice] === 'rock'){
+    else if (playerChoice === 'Rock'){
+        if (choices[computerChoice] === 'Rock'){
             message = 'It is a tie';
         }
-        else if (choices[computerChoice] === 'paper'){
-            message = 'You loose. Paper beat rock.';
+        else if (choices[computerChoice] === 'Paper'){
+            message = 'You loose. Paper beat Rock.';
         }
-        else if (choices[computerChoice] === 'scissors'){
-            message = 'You win! Rock beat scissors';
+        else if (choices[computerChoice] === 'Scissors'){
+            message = 'You win! Rock beat Scissors';
         }
     }
 
-    else if (playerChoice === 'paper'){
-        if (choices[computerChoice] === 'paper'){
+    else if (playerChoice === 'Paper'){
+        if (choices[computerChoice] === 'Paper'){
             message  =  'It is a tie.';
         }
-        if (choices[computerChoice] === 'scissors'){
-            message  =  'You loose. Scissors beat paper.';
+        if (choices[computerChoice] === 'Scissors'){
+            message  =  'You loose. Scissors beat Paper.';
         }
-        if (choices[computerChoice] === 'rock'){
-            message  =  'You win! Paper beat rock.';
+        if (choices[computerChoice] === 'Rock'){
+            message  =  'You win! Paper beat Rock.';
         }
     }
-
-    else message  =  'The world is beautiful'; 
-    console.log(`You choose : ${playerChoice} computer choose : ${choices[computerChoice]}`)
+    selection.textContent = `You choose : ${playerChoice} computer choose : ${choices[computerChoice]}`;
 
     increment(message); //increment player or computer wins
 
     console.log(`Your score : ${playerWins}, Computer score : ${computerWins}`)
+
+
+    scores.textContent = `${message}
+    \nYour score : ${playerWins}, Computer score : ${computerWins}`;
+
     console.log(message)
+
+     
     if(computerWins == 5){
         console.log("You lost :( I won");
     }
     else if(playerWins == 5){
         console.log("I lost, you're too good. Congrats on the win!")
     }
-  if (Math.max(playerWins, computerWins) === 5) {
-    alert('game ended')
-  }
-}
+
+    if (Math.max(playerWins, computerWins) === 5) {
+        alert('game ended')
+        playerWins = 0;
+        computerWins = 0;
+        selection.textContent = ""; 
+        scores.textContent = `Let's start again!
+        \nYour score : ${playerWins}, Computer score : ${computerWins}`;
+        console.log(message)
+      }
+    }
+
+
+
   
 function increment(message){
     if(message.search('You win') > -1){
@@ -86,7 +100,7 @@ function increment(message){
 
 /** Old code :
  * =========================================================================
- * This contains my initial attempt: 
+ * This contains my initial attempt: which was not the proper approach.
  * =========================================================================
  * 
  const results = document.querySelector('#results');
