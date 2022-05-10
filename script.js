@@ -79,8 +79,7 @@ const playMatch = (playerChoice, computerChoice) => {
         playerWins = 0;
         computerWins = 0;
         selection.textContent = ""; 
-        scores.textContent = `Let's start again!
-        \nYour score : ${playerWins}, Computer score : ${computerWins}`;
+        scores.textContent = `Let's start again! \nYour score : ${playerWins}, Computer score : ${computerWins}`;
         console.log(message)
       }
     }
