@@ -18,7 +18,7 @@ body {
     gap: 20px;
 }
 
-#selection, #scores {
+#selection, #scores, #final {
     display: flex;
     justify-content: center;
     align-items: center;
