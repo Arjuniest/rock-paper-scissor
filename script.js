@@ -1,6 +1,7 @@
 const scores = document.querySelector('#scores');
 const selection = document.querySelector('#selection');
 
+const final = document.querySelector('#final');
 
 
 let playerWins = 0;
@@ -17,6 +18,8 @@ buttons.forEach(button => button.addEventListener('click', () => {
 
 
 const playMatch = (playerChoice, computerChoice) => {
+
+  final.textContent ="";
 
   let message
     if (playerChoice === 'Scissors'){
@@ -54,7 +57,7 @@ const playMatch = (playerChoice, computerChoice) => {
             message  =  'You win! Paper beat Rock.';
         }
     }
-    selection.textContent = `You choose : ${playerChoice} computer choose : ${choices[computerChoice]}`;
+    selection.textContent = `You choose : ${playerChoice} & Computer choose : ${choices[computerChoice]}`;
 
     increment(message); //increment player or computer wins
 
@@ -68,21 +71,19 @@ const playMatch = (playerChoice, computerChoice) => {
 
      
     if(computerWins == 5){
-        console.log("You lost :( I won");
-    }
-    else if(playerWins == 5){
-        console.log("I lost, you're too good. Congrats on the win!")
-    }
-
-    if (Math.max(playerWins, computerWins) === 5) {
-        alert('game ended')
+        final.textContent= "You lost :( I won";
         playerWins = 0;
         computerWins = 0;
-        selection.textContent = ""; 
-        scores.textContent = `Let's start again! \nYour score : ${playerWins}, Computer score : ${computerWins}`;
-        console.log(message)
-      }
+        selection.textContent = "";
     }
+    else if(playerWins == 5){
+        final.textContent = "I lost, you're too good. Congrats on the win!";
+        playerWins = 0;
+        computerWins = 0;
+        selection.textContent = "";
+    }    
+
+}
 
 
 
